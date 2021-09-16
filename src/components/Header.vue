@@ -10,6 +10,8 @@
 <style scoped>
 .header
 {
+    position: sticky;
+    top: 0;
 	display: flex;
 	align-items: center;
 	flex-flow: row nowrap;
@@ -29,6 +31,7 @@
 {
     padding: 0px 25px;
 }
+
 .header h1
 {
 	font-size: 18px;
