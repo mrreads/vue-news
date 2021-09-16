@@ -6,10 +6,10 @@
             <p class="post__date"> {{ data.created_at }} </p>
         </div>
         <div class="post__content">
-            <h2 class="post__heading"> {{ data.heading }} </h2>
+            <router-link class="post__heading" :to="{ path: '/post/'+data.id}"> {{ data.heading }} </router-link>
             <p class="post_pretext"> {{ data.pretext }} </p>
-            <p class="post_text"> {{ data.text }} </p>
         </div>
+        <div class="post__controls"></div>
     </div>
 </template>
 
@@ -47,20 +47,15 @@ export default {
 }
 
 .post__heading
-{
+{   
     font-weight: bold;
-	font-size: 26px;
+	font-size: 23px;
 	line-height: 1.3em;
 
 	margin: 10px 0;
 }
 
 .post_pretext
-{
-    margin-bottom: 25px;
-}
-
-.post_pretext, .post_text
 {
 	font-size: 16px;
 	line-height: 23px;

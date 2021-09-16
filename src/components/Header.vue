@@ -2,8 +2,8 @@
     <div class="header">
         <router-link to="/"><h1>VUE-НОВОСТИ</h1></router-link>
 
-        <router-link to="/signup" class="last">Регистрация</router-link>
-        <router-link to="/signin">Войти</router-link>
+        <router-link to="/about" class="last">Регистрация</router-link>
+        <!-- <router-link to="/about">Войти</router-link> -->
     </div>
 </template>
 

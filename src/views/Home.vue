@@ -1,11 +1,10 @@
 <template>
-  <div class="home">
-    <Post></Post>
-    <Post></Post>
-        <Post></Post>
-    <Post></Post>
-        <Post></Post>
-    <Post></Post>
+  <div class="wrapper">
+    <Post v-for="post in posts" 
+      :key="post.id"         
+      :data="post">
+    </Post>
+    
   </div>
 </template>
 
@@ -21,11 +20,34 @@
   }
 </style>
 <script>
-import Post from '@/components/Post.vue'
+import Post from '@/components/PostMini.vue'
 
 export default {
   components: {
     Post
+  },
+
+  data() {
+    return {
+      posts: null
+    }
+  },
+
+  created() {
+    this.loadPosts()
+  },
+
+  methods: {
+    loadPosts() {
+      var requestOptions = { method: 'GET', redirect: 'follow' };
+      fetch("http://vue-news/api/posts", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          //console.log(result)
+          this.posts = result;
+        })
+        .catch(error => console.log('error', error));
+      }
   }
 }
 </script>
