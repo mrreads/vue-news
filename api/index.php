@@ -20,5 +20,8 @@ if ($url[1] == 'posts')
     {
         include __DIR__ . './methods/posts.php';
     }
-
+} else
+if ($url[1] == 'categories')
+{
+    include __DIR__ . './methods/categories.php';
 }

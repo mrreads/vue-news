@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="content-wrapper">
     <Post v-for="post in posts" 
       :key="post.id"         
       :data="post">
@@ -9,7 +9,7 @@
 </template>
 
 <style scoped>  
-  .wrapper
+  .content-wrapper
   {
     padding-bottom: 25px;
   }

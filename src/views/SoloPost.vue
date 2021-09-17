@@ -1,11 +1,11 @@
 <template>
-  <div class="wrapper">
+  <div class="content-wrapper">
     <Post :data="post"></Post>
   </div>
 </template>
 
 <style scoped>
-.wrapper
+.content-wrapper
 {
     padding-bottom: 25px;
 }
