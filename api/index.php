@@ -2,8 +2,8 @@
 
 header('Access-Control-Allow-Origin: *');
 
-$url = $_SERVER['REQUEST_URI'];
-$url = explode('/', $url);
+$parseURL = parse_url($_SERVER['REQUEST_URI']);
+$url = explode('/', $parseURL['path']);
 unset($url[0]);
 $url = array_values($url);
 

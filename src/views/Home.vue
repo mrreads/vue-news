@@ -9,6 +9,11 @@
 </template>
 
 <style scoped>  
+  .wrapper
+  {
+    padding-bottom: 25px;
+  }
+  
   .post:first-child
   {
     margin-top: 25px;
@@ -29,22 +34,49 @@ export default {
 
   data() {
     return {
-      posts: null
+      start: 0,
+      all: null,
+      scrollPosition: null,
+      scrollPersent: null,
+      isLoading: false,
+
+      posts: []
     }
   },
 
   created() {
-    this.loadPosts()
+    this.loadPosts(this.start);
+  },
+
+  mounted() {
+    window.addEventListener('scroll', this.updateScroll);
   },
 
   methods: {
-    loadPosts() {
+    updateScroll() {
+      this.scrollPosition = window.scrollY + innerHeight;
+      this.scrollPersent = parseInt(this.scrollPosition * 100 / document.body.scrollHeight);
+      
+      if (this.scrollPersent >= 70 && this.isLoading != true)
+        this.loadPosts(this.start);
+    },
+
+    loadPosts(s) {
+      this.isLoading = true;
       var requestOptions = { method: 'GET', redirect: 'follow' };
-      fetch("http://vue-news/api/posts", requestOptions)
+      fetch(`http://vue-news/api/posts?s=${s}`, requestOptions)
         .then(response => response.json())
         .then(result => {
+          let oldCount = this.posts.length;
           //console.log(result)
-          this.posts = result;
+          result.forEach(p => {
+            this.posts.push(p)
+          });
+          this.start += 10;
+          this.isLoading = false;
+          let newCount = this.posts.length;
+          if (newCount == oldCount)
+            window.removeEventListener('scroll', this.updateScroll);
         })
         .catch(error => console.log('error', error));
       }

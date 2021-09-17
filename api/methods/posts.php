@@ -1,5 +1,13 @@
 <?php
 
+if (isset($_GET['s']))
+{
+    $start = " LIMIT " . $_GET['s'] . ", 10";
+}
+else
+{
+    $start = '';
+}
 include __DIR__ . './../database.php';
 
 $query = "  SELECT 
@@ -18,7 +26,10 @@ $query = "  SELECT
             WHERE
                 categories.id = posts.id_category
             AND
-                users.id = posts.id_user";
+                users.id = posts.id_user
+            ORDER BY posts.id DESC
+            $start";
+
 $result = $conn->query($query );
 $data = $result->fetch_all(MYSQLI_ASSOC);
 

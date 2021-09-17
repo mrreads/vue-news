@@ -27,7 +27,7 @@ export default {
     border-radius: 15px;
 	max-width: 700px;
 	margin: 0 auto;
-	padding: 25px;
+	padding: 25px 0;
 
 	background-color: #FFFFFF;
 }
@@ -58,6 +58,11 @@ export default {
 .post_pretext
 {
     margin-bottom: 25px;
+}
+
+.post__heading, .post_pretext, .post_text, .post__header, .post__controls
+{
+	padding: 0 25px;
 }
 
 .post_pretext, .post_text
