@@ -8,6 +8,16 @@ else
 {
     $start = '';
 }
+
+if (isset($_GET['c']))
+{
+    $category = " AND posts.id_category = " . $_GET['c'] . " ";
+}
+else
+{
+    $category = ' ';
+}
+
 include __DIR__ . './../database.php';
 
 $query = "  SELECT 
@@ -27,6 +37,7 @@ $query = "  SELECT
                 categories.id = posts.id_category
             AND
                 users.id = posts.id_user
+            $category
             ORDER BY posts.id DESC
             $start";
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="content-wrapper">
+  <div v-if="posts" class="content-wrapper">
     <Post v-for="post in posts" 
       :key="post.id"         
       :data="post">
@@ -40,18 +40,27 @@ export default {
       scrollPersent: null,
       isLoading: false,
 
+      cat: this.$route.params.id,
+
       posts: []
     }
   },
-
   created() {
     this.loadPosts(this.start);
   },
-
   mounted() {
     window.addEventListener('scroll', this.updateScroll);
   },
 
+  watch:{
+    $route () {
+      this.posts = [];
+      this.start = 0;
+      
+      this.cat = this.$route.params.id;
+      this.loadPosts(this.start);
+    }
+  },
   methods: {
     updateScroll() {
       this.scrollPosition = window.scrollY + innerHeight;
@@ -64,12 +73,12 @@ export default {
     loadPosts(start) {
       this.isLoading = true;
       var requestOptions = { method: 'GET', redirect: 'follow' };
-      fetch(`http://vue-news/api/posts?s=${start}`, requestOptions)
+      fetch(`http://vue-news/api/posts?s=${start}&c=${this.cat}`, requestOptions)
         .then(response => response.json())
         .then(result => {
           let oldCount = this.posts.length;
-          //console.log(result)
-          result.forEach(p => {
+            //console.log(result)
+            result.forEach(p => {
             this.posts.push(p)
           });
           this.start += 10;

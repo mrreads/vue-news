@@ -1,7 +1,7 @@
 <template>
     <div class="categories">
         <h3>Категории:</h3>
-        <router-link to="/category" v-for="category in categories" :key="category.id" class="category"> {{ category.name }} </router-link>
+        <router-link :to="{ path: '/category/'+category.id}" v-for="category in categories" :key="category.id" class="category"> {{ category.name }} </router-link>
     </div>
 </template>
 
@@ -68,7 +68,7 @@ export default {
       fetch(`http://vue-news/api/categories`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          console.log(result);
+          //console.log(result);
           this.categories = result;
         })
         .catch((error) => console.log("error", error));
