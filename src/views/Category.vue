@@ -51,12 +51,15 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.updateScroll);
   },
-
+  unmounted() {
+    window.removeEventListener("scroll", this.updateScroll);
+  },
+  
   watch:{
     $route () {
       this.posts = [];
       this.start = 0;
-      
+
       this.cat = this.$route.params.id;
       this.loadPosts(this.start);
     }

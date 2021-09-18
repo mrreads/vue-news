@@ -2,7 +2,8 @@
     <div class="header">
         <router-link to="/"><h1>VUE-НОВОСТИ</h1></router-link>
 
-        <router-link to="/about" class="last">Регистрация</router-link>
+        <router-link to="/signin" class="last">Вход</router-link>
+        <router-link to="/signup">Регистрация</router-link>
         <!-- <router-link to="/about">Войти</router-link> -->
     </div>
 </template>
@@ -37,5 +38,29 @@
 .header h1
 {
 	font-size: 18px;
+}
+
+@media screen and (max-width: 1024px)
+{
+	.header a
+	{
+		padding: 0px 20px;
+	}
+}
+
+@media screen and (max-width: 768px)
+{
+	.header h1
+	{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 425px)
+{
+	.header a
+	{
+		padding: 0px 15px;
+	}
 }
 </style>

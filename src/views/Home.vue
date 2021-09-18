@@ -51,6 +51,9 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.updateScroll);
   },
+  unmounted() {
+    window.removeEventListener("scroll", this.updateScroll);
+  },
 
   methods: {
     updateScroll() {
