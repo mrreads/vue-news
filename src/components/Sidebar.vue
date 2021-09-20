@@ -124,6 +124,7 @@ export default {
   },
 
   created() {
+    this.checkWidth();
     this.loadCategories();
     window.addEventListener("resize", this.checkWidth);
   },

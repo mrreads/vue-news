@@ -24,4 +24,14 @@ if ($url[1] == 'posts')
 if ($url[1] == 'categories')
 {
     include __DIR__ . './methods/categories.php';
+} 
+else
+if ($url[1] == 'signup')
+{
+    include __DIR__ . './methods/signup.php';
+}
+else
+if ($url[1] == 'signin')
+{
+    include __DIR__ . './methods/signin.php';
 }

@@ -3,6 +3,16 @@
     <h1>Авторизация</h1>
     <input type="text" placeholder="Логин">
     <input type="password" placeholder="Пароль">
-        <button>Войти</button>
+        <button v-on:click="login">Войти</button>
   </div>
-</template> 
+</template>
+
+<script>
+export default {
+  methods: {
+    login() {
+      console.log('войти');
+    }
+  }
+}
+</script>

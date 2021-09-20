@@ -78,7 +78,7 @@ export default {
           this.start += 10;
           this.isLoading = false;
           let newCount = this.posts.length;
-          if (newCount == oldCount)
+          if (newCount == oldCount && oldCount > 0)
             window.removeEventListener('scroll', this.updateScroll);
         })
         .catch(error => console.log('error', error));
