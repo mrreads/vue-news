@@ -67,7 +67,7 @@ export default {
     loadPosts(start) {
       this.isLoading = true;
       var requestOptions = { method: 'GET', redirect: 'follow' };
-      fetch(`http://vue-news/api/posts?s=${start}`, requestOptions)
+      fetch(`http://localhost:3000/api/posts?s=${start}`, requestOptions)
         .then(response => response.json())
         .then(result => {
           let oldCount = this.posts.length;

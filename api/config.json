@@ -1,0 +1,8 @@
+{
+    "connection":{
+       "host":"localhost",
+       "user":"root",
+       "database":"vue-news"
+    },
+    "salt": "305acD9t144kZPAhQBGMGW17EuVcTxty"
+ }

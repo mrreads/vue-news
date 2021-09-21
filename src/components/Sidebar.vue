@@ -142,7 +142,7 @@ export default {
 
     loadCategories() {
       var requestOptions = { method: "GET", redirect: "follow" };
-      fetch(`http://vue-news/api/categories`, requestOptions)
+      fetch("http://localhost:3000/api/categories", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           //console.log(result);

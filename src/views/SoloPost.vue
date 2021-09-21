@@ -35,10 +35,9 @@ export default {
   methods: {
     loadPost() {
       var requestOptions = { method: "GET", redirect: "follow" };
-      fetch(`http://vue-news/api/posts/${this.id}`, requestOptions)
+      fetch(`http://localhost:3000/api/posts/${this.id}`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          //console.log(result);
           this.post = result;
         })
         .catch((error) => console.log("error", error));

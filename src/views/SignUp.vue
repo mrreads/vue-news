@@ -48,7 +48,10 @@ export default {
 
       if (!this.passwordError)
       {
-        var formdata = new FormData();
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+        var formdata = new URLSearchParams();
         formdata.append("fullname", this.fullName);
         formdata.append("login", this.login);
         formdata.append("email", this.email);
@@ -57,14 +60,16 @@ export default {
         var requestOptions = {
           method: 'POST',
           body: formdata,
-          redirect: 'follow'
+          redirect: 'follow',
+          headers: myHeaders,
         };
 
-        fetch("http://vue-news/api/signup", requestOptions)
+        fetch("http://localhost:3000/api/signup", requestOptions)
           .then(response => response.json())
           .then(result => {
+            console.log(result);
             this.loginError = false;
-            this.email = false;
+            this.emailError = false;
 
             if (result.indexOf('login error') >= 0)
             {
