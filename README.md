@@ -1,24 +1,19 @@
-# vue-news
+# Новостник на Vue
 
-## Project setup
-```
-yarn install
-```
+## Запуск
+- Загрузить **базу** на локальный или удалённый сервер
+- Изменить данные **подключения к БД** в **кофиге**
+- Запустить **серверную** часть (api)
+- Запустить **клиентскую** часть
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## API
 
-### Compiles and minifies for production
-```
-yarn build
-```
+API располагается в папке **/api/**, запускается командой:
+```npm run serve```
 
-### Lints and fixes files
-```
-yarn lint
-```
+Перед этим требуется загрузить ***mysql*** базу на сервер и указать к ней путь.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Конфиг с базой находится в **/api/config.json**
+
+## VUE
+Клиентская часть написана на VueJS, запуск происходит командой ```npm run serve```
